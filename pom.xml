@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>Zenith-App</groupId>
-	<artifactId>ZenithApp</artifactId>
+	<artifactId>zenith-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ZenithApp</name>
+	<name>zenithapp</name>
 	<description>A beautiful app for finding your perfect watch!</description>
 	<properties>
 		<java.version>11</java.version>
@@ -37,14 +37,19 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.3.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
 
