@@ -16,4 +16,15 @@ public class Zenith {
     private String description;
     private int price;
 
+    public Zenith(){}
+
+    public Zenith(Long id, String nameWatch, String description, int price) {
+        this.id = id;
+        this.nameWatch = nameWatch;
+        this.description = description;
+        this.price = price;
+    }
+
+
+
 }
