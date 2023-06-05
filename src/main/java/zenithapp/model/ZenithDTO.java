@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Data
 @Entity
-public class Zenith {
+public class ZenithDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,9 +16,9 @@ public class Zenith {
     private String description;
     private int price;
 
-    public Zenith(){}
+    public ZenithDTO(){}
 
-    public Zenith(Long id, String nameWatch, String description, int price) {
+    public ZenithDTO(Long id, String nameWatch, String description, int price) {
         this.id = id;
         this.nameWatch = nameWatch;
         this.description = description;

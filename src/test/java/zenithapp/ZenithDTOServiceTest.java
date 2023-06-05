@@ -6,7 +6,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import zenithapp.model.Zenith;
+import zenithapp.model.ZenithDTO;
 import zenithapp.repository.ZenithRepository;
 import zenithapp.service.ZenithService;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-public class ZenithServiceTest {
+public class ZenithDTOServiceTest {
     @Mock
     private ZenithRepository zenithRepository;
 
@@ -27,43 +27,43 @@ public class ZenithServiceTest {
     }
     @Test
     public void testGetAllWatches() {
-        List<Zenith> watches = List.of(new Zenith(1L, "Watch 1", "Description 1", 540));
+        List<ZenithDTO> watches = List.of(new ZenithDTO(1L, "Watch 1", "Description 1", 540));
 
         Mockito.when(zenithRepository.findAll()).thenReturn(watches);
 
-        List<Zenith> result = zenithService.getAll();
+        List<ZenithDTO> result = zenithService.getAll();
         assertEquals(watches, result);
     }
 
     @Test
     public void testGetWatchById() {
-        Zenith watch = new Zenith(1L, "Watch 1", "Description 1", 540);
+        ZenithDTO watch = new ZenithDTO(1L, "Watch 1", "Description 1", 540);
 
         Mockito.when(zenithRepository.findById(1L)).thenReturn(Optional.of(watch));
 
-        Zenith result = zenithService.getById(1L);
+        ZenithDTO result = zenithService.getById(1L);
         assertEquals(watch, result);
     }
 
     @Test
     public void testAddWatch() {
-        Zenith watch = new Zenith(1L, "Watch 1", "Description 1", 540);
+        ZenithDTO watch = new ZenithDTO(1L, "Watch 1", "Description 1", 540);
 
         Mockito.when(zenithRepository.save(watch)).thenReturn(watch);
 
-        Zenith result = zenithService.addWatches(watch);
+        ZenithDTO result = zenithService.addWatches(watch);
         assertEquals(watch, result);
     }
 
     @Test
     public void testUpdateWatch() {
-        Zenith watch = new Zenith(1L, "Watch 1", "Description 1", 540);
+        ZenithDTO watch = new ZenithDTO(1L, "Watch 1", "Description 1", 540);
 
         Mockito.when(zenithRepository.findById(1L)).thenReturn(Optional.of(watch));
 
         Mockito.when(zenithRepository.save(watch)).thenReturn(watch);
 
-        Zenith result = zenithService.updateWatches(1L, watch);
+        ZenithDTO result = zenithService.updateWatches(1L, watch);
         assertEquals(watch, result);
     }
 

@@ -10,14 +10,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import zenithapp.controller.ZenithController;
-import zenithapp.model.Zenith;
+import zenithapp.model.ZenithDTO;
 import zenithapp.service.ZenithService;
 import java.util.List;
 import static org.mockito.ArgumentMatchers.any;
 
 
 @WebMvcTest(ZenithController.class)
-public class ZenithControllerTest {
+public class ZenithDTOControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -26,8 +26,8 @@ public class ZenithControllerTest {
 
     @Test
     public void testGetAllWatches() throws Exception {
-        List<Zenith> zeniths = List.of(new Zenith(1L, "Watch 1", "description1", 540));
-        Mockito.when(zenithService.getAll()).thenReturn(zeniths);
+        List<ZenithDTO> zenithDTOS = List.of(new ZenithDTO(1L, "Watch 1", "description1", 540));
+        Mockito.when(zenithService.getAll()).thenReturn(zenithDTOS);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/watches"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -40,8 +40,8 @@ public class ZenithControllerTest {
     @Test
     public void testGetWatchById() throws Exception {
         Long id = 1L;
-        Zenith zenith = new Zenith(id, "Watch 1", "description1", 540);
-        Mockito.when(zenithService.getById(id)).thenReturn(zenith);
+        ZenithDTO zenithDTO = new ZenithDTO(id, "Watch 1", "description1", 540);
+        Mockito.when(zenithService.getById(id)).thenReturn(zenithDTO);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/watches/{id}", id))
                 .andExpect(MockMvcResultMatchers.status().isOk())
@@ -53,8 +53,8 @@ public class ZenithControllerTest {
 
     @Test
     public void testAddWatch() throws Exception {
-        Zenith zenith = new Zenith(1L, "Watch 1", "description1", 540);
-        Mockito.when(zenithService.addWatches(any(Zenith.class))).thenReturn(zenith);
+        ZenithDTO zenithDTO = new ZenithDTO(1L, "Watch 1", "description1", 540);
+        Mockito.when(zenithService.addWatches(any(ZenithDTO.class))).thenReturn(zenithDTO);
 
         String zenithJson = "{\"id\": 1, \"name\": \"Watch 1\", \"description\": \"description1\", \"price\": 540}";
 
@@ -71,7 +71,7 @@ public class ZenithControllerTest {
     @Test
     public void testUpdateWatch() throws Exception {
         Long id = 1L;
-        Zenith updatedWatch = new Zenith(id, "Watch 1", "description1", 540);
+        ZenithDTO updatedWatch = new ZenithDTO(id, "Watch 1", "description1", 540);
         Mockito.when(zenithService.updateWatches(id, updatedWatch)).thenReturn(updatedWatch);
 
         String updatedZenithJson = "{\"id\": 1, \"nameWatch\": \"Watch 1\", \"description\": \"description1\", \"price\": 540}";

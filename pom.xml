@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>Zenith-App</groupId>
-	<artifactId>zenith-app</artifactId>
+	<artifactId>zenithDTO-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>zenithapp</name>
 	<description>A beautiful app for finding your perfect watch!</description>

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import zenithapp.model.Zenith;
+import zenithapp.model.ZenithDTO;
 import zenithapp.repository.ZenithRepository;
 
 import java.util.List;
@@ -17,19 +17,19 @@ public class ZenithService {
         this.zenithRepository = zenithRepository;
     }
 
-    public List<Zenith> getAll() {
+    public List<ZenithDTO> getAll() {
         return zenithRepository.findAll();
     }
 
-    public Zenith addWatches(@RequestBody Zenith zenith) {
-        return zenithRepository.save(zenith);
+    public ZenithDTO addWatches(@RequestBody ZenithDTO zenithDTO) {
+        return zenithRepository.save(zenithDTO);
     }
 
-    public Zenith getById(@PathVariable Long id) {
+    public ZenithDTO getById(@PathVariable Long id) {
         return zenithRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("\"Watch not found with id: \"+ id"));
     }
 
-    public Zenith updateWatches(Long id, Zenith updateWatch) {
+    public ZenithDTO updateWatches(Long id, ZenithDTO updateWatch) {
         return zenithRepository.findById(id)
                 .map(zenith -> {
                     zenith.setNameWatch(updateWatch.getNameWatch());
