@@ -1,7 +1,9 @@
 package zenithapp.repository;
 
-import zenithapp.model.ZenithDTO;
+import org.springframework.stereotype.Repository;
+import zenithapp.model.Zenith;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ZenithRepository  extends JpaRepository<ZenithDTO, Long> {
+@Repository
+public interface ZenithRepository extends JpaRepository<Zenith, Long> {
 }

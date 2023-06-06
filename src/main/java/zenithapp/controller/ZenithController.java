@@ -1,6 +1,6 @@
 package zenithapp.controller;
 
-import zenithapp.model.ZenithDTO;
+import zenithapp.dto.ZenithDTO;
 import zenithapp.service.ZenithService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ public class ZenithController {
 
     @GetMapping
     public List<ZenithDTO> getAll() {
-        return zenithService.getAll();
+        return zenithService.getAllWatches();
     }
 
     @PostMapping
@@ -27,17 +27,17 @@ public class ZenithController {
     }
 
     @GetMapping("/{id}")
-    public ZenithDTO getById(@PathVariable Long id) {
-        return zenithService.getById(id);
+    public ZenithDTO getWatchById(@PathVariable Long id) {
+        return zenithService.getWatchById(id);
     }
 
     @PutMapping("/{id}")
-    public ZenithDTO updateWatches(@PathVariable Long id, @RequestBody ZenithDTO updateWatch) {
-        return zenithService.updateWatches(id, updateWatch);
+    public ZenithDTO updateWatch(@PathVariable Long id, @RequestBody ZenithDTO updateWatch) {
+        return zenithService.updateWatch(id, updateWatch);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteWatches(@PathVariable Long id) {
-        zenithService.deleteWatches(id);
+    public void deleteWatch(@PathVariable Long id) {
+        zenithService.deleteWatch(id);
     }
 }

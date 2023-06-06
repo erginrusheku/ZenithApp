@@ -1,13 +1,14 @@
 package zenithapp.mapper;
 
 import org.springframework.stereotype.Component;
-import zenithapp.model.ZenithDTO;
+import zenithapp.dto.ZenithDTO;
+import zenithapp.model.Zenith;
 
 @Component
 public class ZenithMapper {
 
-    public zenithapp.dto.ZenithDTO toDto(ZenithDTO zenith){
-        zenithapp.dto.ZenithDTO zenithDTO = new zenithapp.dto.ZenithDTO();
+    public zenithapp.dto.ZenithDTO toDto(Zenith zenith){
+        ZenithDTO zenithDTO = new ZenithDTO();
         zenithDTO.setId(zenith.getId());
         zenithDTO.setNameWatch(zenith.getNameWatch());
         zenithDTO.setDescription(zenith.getDescription());
@@ -15,8 +16,8 @@ public class ZenithMapper {
         return zenithDTO;
     }
 
-    public ZenithDTO toEntity(zenithapp.dto.ZenithDTO zenithDTO){
-        ZenithDTO zenith = new ZenithDTO();
+    public Zenith toEntity(ZenithDTO zenithDTO){
+        Zenith zenith = new Zenith();
         zenith.setId(zenithDTO.getId());
         zenith.setNameWatch(zenithDTO.getNameWatch());
         zenith.setDescription(zenithDTO.getDescription());
